@@ -1,0 +1,66 @@
+:root{
+  --primary:#0ea5e9;   /* xanh dương */
+  --accent:#16a34a;    /* xanh lá cho nút gọi */
+  --dark:#0f172a;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:#111827;background:#fff}
+a{text-decoration:none;color:inherit}
+.container{max-width:1100px;margin:0 auto;padding:0 16px}
+
+header{position:sticky;top:0;background:#fff;border-bottom:1px solid #e5e7eb;z-index:50}
+.nav{display:flex;align-items:center;justify-content:space-between;height:60px}
+.brand{font-weight:800;color:var(--dark)}
+.brand span{color:var(--primary)}
+.btn{display:inline-block;padding:10px 16px;border-radius:10px;font-weight:700}
+.btn-primary{background:var(--primary);color:#fff}
+.btn-outline{border:2px solid var(--primary);color:var(--primary)}
+
+.hero{background:linear-gradient(180deg,#f0f9ff,#fff);padding:40px 0 24px}
+.hero h1{font-size:28px;line-height:1.2;margin:0 0 10px}
+.hero p{margin:0 0 16px;color:#374151}
+.hero-img{width:100%;border-radius:16px;border:1px solid #e5e7eb}
+
+.cards{display:grid;grid-template-columns:1fr;gap:12px;margin:24px 0}
+.card{border:1px solid #e5e7eb;border-radius:14px;padding:16px}
+.card h3{margin:0 0 6px}
+
+.grid-2{display:grid;grid-template-columns:1fr;gap:16px}
+.map{border:0;width:100%;height:260px;border-radius:14px}
+
+.price-line{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px dashed #e5e7eb}
+.price-line:last-child{border-bottom:0}
+.muted{color:#6b7280;margin-top:8px}
+
+footer{margin:40px 0 96px;color:#6b7280}
+
+/* Thanh liên hệ dính dưới (mobile) */
+.sticky-cta{
+  position:fixed;left:0;right:0;bottom:0;z-index:60;background:#fff;
+  box-shadow:0 -8px 30px rgba(0,0,0,.08);padding:10px 12px;display:flex;gap:10px
+}
+.sticky-cta a{flex:1;text-align:center;padding:12px 0;border-radius:12px;color:#fff;font-weight:800}
+.sticky-cta a.call{background:var(--accent)}
+.sticky-cta a.zalo{background:#0176ff}
+
+/* Nút gọi nổi tròn (mobile) */
+.call-fab{
+  position:fixed;right:16px;bottom:86px;width:58px;height:58px;border-radius:50%;
+  background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;
+  font-size:26px;box-shadow:0 10px 24px rgba(0,0,0,.22);z-index:60
+}
+
+/* Desktop */
+@media (min-width:768px){
+  .hero{padding:70px 0 40px}
+  .hero h1{font-size:40px}
+  .cards{grid-template-columns:repeat(3,1fr)}
+  .grid-2{grid-template-columns:1.2fr .8fr}
+  .sticky-cta,.call-fab{display:none}
+}
+
+.logo{
+  height:50px;   /* chỉnh chiều cao logo */
+  width:auto;    /* tự động co theo tỷ lệ */
+  display:block;
+}
