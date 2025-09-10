@@ -64,3 +64,24 @@ footer{margin:40px 0 96px;color:#6b7280}
   width:auto;    /* tự động co theo tỷ lệ */
   display:block;
 }
+
+.car-img {
+  width: 100%;
+  height: auto;
+  max-width: 500px;   /* Giới hạn chiều ngang tối đa */
+  display: block;
+  margin: 0 auto;      /* Canh giữa ảnh */
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,.08);
+}
+
+.car-grid {
+  display: flex;
+  flex-wrap: wrap;       /* Cho phép xuống dòng khi màn nhỏ */
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.car-grid > * {
+  flex: 1 1 300px;       /* Các khối co giãn, min-width 300px */
+}
