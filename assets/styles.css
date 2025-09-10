@@ -85,3 +85,24 @@ footer{margin:40px 0 96px;color:#6b7280}
 .car-grid > * {
   flex: 1 1 300px;       /* Các khối co giãn, min-width 300px */
 }
+
+.price-line.highlight {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 8px 0;
+  text-align: center; /* canh giữa (nếu muốn) */
+}
+
+.price-line.highlight .old-price {
+  color: #888;
+  text-decoration: line-through;
+  display: block;          /* ép xuống 1 dòng riêng */
+  margin-bottom: 4px;
+}
+
+.price-line.highlight .new-price {
+  color: #e53935;          /* đỏ nổi bật */
+  font-size: 1.4rem;
+  font-weight: bold;
+  display: block;          /* xuống dòng */
+}
