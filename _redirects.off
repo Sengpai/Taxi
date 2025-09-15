@@ -1,5 +1,0 @@
-# Ép toàn bộ HTTP sang HTTPS
-http://*    https://:splat    301!
-
-# Ép www về non-www
-www.taxichauthanh.com/*    https://taxichauthanh.com/:splat    301!
