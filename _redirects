@@ -1,0 +1,2 @@
+# Redirect www -> non-www
+https://www.taxichauthanh.com/*   https://taxichauthanh.com/:splat   301!
