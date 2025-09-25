@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  
+
   <title>Taxi Châu Thành - An Giang | Gọi xe 24/7</title>
   <meta name="description" content="Taxi Châu Thành - An Giang. Xe 4-7 chỗ, đón tận nơi, giá hợp lý. Gọi 0939 567 156." />
   <meta name="keywords" content="taxi Châu Thành, taxi An Giang, taxi giá rẻ, taxi 24/7, gọi xe Châu Thành An Giang" />
@@ -15,10 +15,9 @@
   <link rel="stylesheet" href="./assets/styles.css" />
 
   <!-- Favicon -->
-   <link rel="icon" href="./images/Logo.png" type="image/png">
+  <link rel="icon" href="./images/Logo.png" type="image/png" />
 
-
-  <!-- Open Graph (Facebook, Zalo, etc.) -->
+  <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Taxi Châu Thành - An Giang | Gọi xe 24/7" />
   <meta property="og:description" content="Xe 4-7 chỗ, đón tận nơi, giá hợp lý. Gọi 0939 567 156." />
@@ -46,14 +45,30 @@
     "sameAs": ["https://zalo.me/0939567156"]
   }
   </script>
+
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17574052899"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag(){ dataLayer.push(arguments); }
     gtag('js', new Date());
-
     gtag('config', 'AW-17574052899');
+
+    // Conversion: Lượt xem trang (chỉ bắn khi đến từ Google Ads)
+    (function firePageviewConversionOnce() {
+      try {
+        var qs = new URLSearchParams(location.search);
+        if (!qs.get('gclid')) return;                 // chỉ tính click Ads
+        if (sessionStorage.getItem('conv_pageview_fired')) return; // tránh bắn 2 lần
+        sessionStorage.setItem('conv_pageview_fired', '1');
+
+        gtag('event', 'conversion', {
+          send_to: 'AW-17574052899/_n2gCOHJiaAbEKOI-7tB',
+          value: 1.0,
+          currency: 'VND'
+        });
+      } catch(e) {}
+    })();
   </script>
 </head>
 
