@@ -51,15 +51,20 @@
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){ dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'AW-17574052899');
 
-    // Conversion: Lượt xem trang (chỉ bắn khi đến từ Google Ads)
+    gtag('js', new Date());
+
+    // Config Ads + enable phone tracking
+    gtag('config', 'AW-17574052899', {
+      'phone_conversion_number': '+84 939 567 156'
+    });
+
+    // --- CONVERSION 1: Lượt xem trang (chỉ bắn khi đến từ Google Ads) ---
     (function firePageviewConversionOnce() {
       try {
         var qs = new URLSearchParams(location.search);
-        if (!qs.get('gclid')) return;                 // chỉ tính click Ads
-        if (sessionStorage.getItem('conv_pageview_fired')) return; // tránh bắn 2 lần
+        if (!qs.get('gclid')) return;
+        if (sessionStorage.getItem('conv_pageview_fired')) return;
         sessionStorage.setItem('conv_pageview_fired', '1');
 
         gtag('event', 'conversion', {
@@ -69,13 +74,35 @@
         });
       } catch(e) {}
     })();
+
+    // --- CONVERSION 2: Nhấp gọi từ website (click vào liên kết tel:) ---
+    (function attachTelClickConversion() {
+      var SEND_TO = 'AW-17574052899/CALL_LABEL'; // 👉 thay CALL_LABEL bằng label thật từ Google Ads
+
+      document.addEventListener('click', function(e){
+        var a = e.target.closest('a[href^="tel:"]');
+        if (!a) return;
+
+        if (a.dataset.convFired === '1') return;
+        a.dataset.convFired = '1';
+        setTimeout(function(){ a.dataset.convFired = '0'; }, 3000);
+
+        try {
+          gtag('event', 'conversion', {
+            send_to: SEND_TO,
+            value: 1.0,
+            currency: 'VND'
+          });
+        } catch(err) {}
+      });
+    })();
   </script>
 </head>
 
 <body>
   <header>
     <div class="container nav">
-      <div class="brand"> <img src="./images/Logo.png" alt="Taxi Châu Thành - An Giang" class="logo"></div>
+      <div class="brand"><img src="./images/Logo.png" alt="Taxi Châu Thành - An Giang" class="logo"></div>
       <div class="cta">
         <a class="btn btn-outline" href="https://zalo.me/0939567156" target="_blank" rel="noopener">Zalo</a>
         <a class="btn btn-primary" href="tel:+84939567156">Gọi 0939 567 156</a>
@@ -100,7 +127,7 @@
       </div>
     </section>
 
-    <!-- GIỚI THIỆU XE DÀNH CHO TAXI -->
+    <!-- GIỚI THIỆU XE -->
     <section id="xe" class="container">
       <h2>Mitsubishi Xpander – Lý tưởng cho chuyến đi của bạn</h2>
       <div class="car-grid">
@@ -142,19 +169,44 @@
       <h2>Giá tham khảo</h2>
       <div class="price-line highlight">
         <span class="old-price">15.000đ/km</span><br>
-    </div>
+      </div>
 
-     <div class="price-line highlight">
+      <div class="price-line highlight">
         <span class="new-price">12.000đ/km</span>
-    </div>
+      </div>
 
+      <div class="price-line"><span>Châu Thành ↔ Long Xuyên</span></div>
+      <div class="price-line"><span>Châu Thành ↔ Châu Đốc</span></div>
+      <div class="price-line"><span>Châu Thành ↔ Cần Thơ</span></div>
+      <p class="muted">Các vùng lân cận Châu Thành có thể 📞 Gọi 0939 567 156 trực tiếp để đặt xe.</p>
+    </section>
 
-
-        <div class="price-line"><span>Châu Thành ↔ Long Xuyên</span></div>
-        <div class="price-line"><span>Châu Thành ↔ Châu Đốc</span></div>
-        <div class="price-line"><span>Châu Thành ↔ Cần Thơ</span></div>
-        <p class="muted">Các vùng lân cận Châu Thành có thể 📞Gọi 0939 567 156 trực tiếp để đặt xe.</p>
+    <section class="container">
+      <h2>Liên hệ & vị trí</h2>
+      <div class="grid-2">
+        <div class="card">
+          <p><b>Hotline:</b> <a href="tel:+84939567156">0939 567 156</a></p>
+          <p><b>Zalo:</b> <a href="https://zalo.me/0939567156" target="_blank" rel="noopener">Chat ngay</a></p>
+          <p><b>Khu vực phục vụ:</b> Châu Thành, An Giang và lân cận</p>
+          <div class="cta">
+            <a class="btn btn-primary" href="tel:+84939567156">📞 Đặt xe</a>
+            <a class="btn btn-outline" href="https://zalo.me/0939567156" target="_blank" rel="noopener">Nhắn Zalo</a>
+          </div>
+        </div>
+        <iframe class="map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Ch%C3%A2u%20Th%C3%A0nh%20An%20Giang&output=embed"></iframe>
       </div>
     </section>
 
-    <section class="container"> <h2>Liên hệ & vị trí</h2> <div class="grid-2"> <div class="card"> <p><b>Hotline:</b> <a href="tel:+84939567156">0939 567 156</a></p> <p><b>Zalo:</b> <a href="https://zalo.me/0939567156" target="_blank" rel="noopener">Chat ngay</a></p> <p><b>Khu vực phục vụ:</b> Châu Thành, An Giang và lân cận</p> <div class="cta"> <a class="btn btn-primary" href="tel:+84939567156">📞 Đặt xe</a> <a class="btn btn-outline" href="https://zalo.me/0939567156" target="_blank" rel="noopener">Nhắn Zalo</a> </div> </div> <iframe class="map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Ch%C3%A2u%20Th%C3%A0nh%20An%20Giang&output=embed"></iframe> </div> </section> <footer class="container"> © 2025 Taxi Châu Thành – An Giang. Hoạt động 24/7. </footer> </main> <!-- Mobile actions --> <a class="call-fab" href="tel:+84939567156" aria-label="Gọi ngay">📞</a> <div class="sticky-cta"> <a class="call" href="tel:+84939567156">📞 Gọi 0939 567 156</a> <a class="zalo" href="https://zalo.me/0939567156" target="_blank" rel="noopener">Zalo Chat</a> </div> <script src="./assets/app.js"></script> </body> </html>  
+    <footer class="container">© 2025 Taxi Châu Thành – An Giang. Hoạt động 24/7.</footer>
+  </main>
+
+  <!-- Mobile actions -->
+  <a class="call-fab" href="tel:+84939567156" aria-label="Gọi ngay">📞</a>
+  <div class="sticky-cta">
+    <a class="call" href="tel:+84939567156">📞 Gọi 0939 567 156</a>
+    <a class="zalo" href="https://zalo.me/0939567156" target="_blank" rel="noopener">Zalo Chat</a>
+  </div>
+
+  <script src="./assets/app.js"></script>
+</body>
+</html>
