@@ -9,7 +9,7 @@
   <meta name="keywords" content="taxi Châu Thành, taxi An Giang, taxi giá rẻ, taxi 24/7, gọi xe Châu Thành An Giang" />
 
   <!-- Canonical -->
-  <link rel="canonical" href="https://taxichauthanh.com/" />
+  <link rel="canonical" href="https://www.taxichauthanh.com/" />
 
   <!-- Styles -->
   <link rel="stylesheet" href="./assets/styles.css" />
@@ -51,15 +51,19 @@
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){ dataLayer.push(arguments); }
-
     gtag('js', new Date());
 
-    // Config Ads + enable phone tracking
+    // --- CONFIG 1: Tài khoản cũ ---
     gtag('config', 'AW-17574052899', {
       'phone_conversion_number': '+84 939 567 156'
     });
 
-    // --- CONVERSION 1: Lượt xem trang (chỉ bắn khi đến từ Google Ads) ---
+    // --- CONFIG 2: Tài khoản mới ---
+    gtag('config', 'AW-17650618403');
+  </script>
+
+  <script>
+    // --- CONVERSION 1: Lượt xem trang (chỉ khi đến từ Google Ads) ---
     (function firePageviewConversionOnce() {
       try {
         var qs = new URLSearchParams(location.search);
@@ -67,38 +71,42 @@
         if (sessionStorage.getItem('conv_pageview_fired')) return;
         sessionStorage.setItem('conv_pageview_fired', '1');
 
+        // Gửi đến tài khoản 1
         gtag('event', 'conversion', {
           send_to: 'AW-17574052899/_n2gCOHJiaAbEKOI-7tB',
+          value: 1.0,
+          currency: 'VND'
+        });
+
+        // Gửi đến tài khoản 2 (thay PAGEVIEW_LABEL thật)
+        gtag('event', 'conversion', {
+          send_to: 'AW-17650618403/PAGEVIEW_LABEL',
           value: 1.0,
           currency: 'VND'
         });
       } catch(e) {}
     })();
 
-    // --- CONVERSION 2: Nhấp gọi từ website (click vào liên kết tel:) ---
+    // --- CONVERSION 2: Nhấp gọi từ website (click tel:) ---
     (function attachTelClickConversion() {
-      var SEND_TO = 'AW-17574052899/CALL_LABEL'; // 👉 thay CALL_LABEL bằng label thật từ Google Ads
+      var SEND_TO1 = 'AW-17574052899/CALL_LABEL';   // thay CALL_LABEL thật
+      var SEND_TO2 = 'AW-17650618403/CALL_LABEL';   // thay CALL_LABEL thật
 
       document.addEventListener('click', function(e){
         var a = e.target.closest('a[href^="tel:"]');
         if (!a) return;
-
         if (a.dataset.convFired === '1') return;
         a.dataset.convFired = '1';
-        setTimeout(function(){ a.dataset.convFired = '0'; }, 3000);
+        setTimeout(() => a.dataset.convFired = '0', 3000);
 
         try {
-          gtag('event', 'conversion', {
-            send_to: SEND_TO,
-            value: 1.0,
-            currency: 'VND'
-          });
+          gtag('event', 'conversion', { send_to: SEND_TO1, value: 1.0, currency: 'VND' });
+          gtag('event', 'conversion', { send_to: SEND_TO2, value: 1.0, currency: 'VND' });
         } catch(err) {}
       });
     })();
   </script>
 </head>
-
 <body>
   <header>
     <div class="container nav">
