@@ -50,171 +50,194 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17574052899"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
+    function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
-    // --- CONFIG 1: Tài khoản cũ ---
-    gtag('config', 'AW-17574052899', {
-      'phone_conversion_number': '+84 939 567 156'
-    });
-
-    // --- CONFIG 2: Tài khoản mới ---
+    gtag('config', 'AW-17574052899', {'phone_conversion_number': '+84 939 567 156'});
     gtag('config', 'AW-17650618403');
   </script>
 
   <script>
-    // --- CONVERSION 1: Lượt xem trang (chỉ khi đến từ Google Ads) ---
-    (function firePageviewConversionOnce() {
-      try {
-        var qs = new URLSearchParams(location.search);
-        if (!qs.get('gclid')) return;
-        if (sessionStorage.getItem('conv_pageview_fired')) return;
-        sessionStorage.setItem('conv_pageview_fired', '1');
-
-        // Gửi đến tài khoản 1
-        gtag('event', 'conversion', {
-          send_to: 'AW-17574052899/_n2gCOHJiaAbEKOI-7tB',
-          value: 1.0,
-          currency: 'VND'
-        });
-
-        // Gửi đến tài khoản 2 (thay PAGEVIEW_LABEL thật)
-        gtag('event', 'conversion', {
-          send_to: 'AW-17650618403/PAGEVIEW_LABEL',
-          value: 1.0,
-          currency: 'VND'
-        });
-      } catch(e) {}
+    (function firePageviewConversionOnce(){
+      try{
+        const qs = new URLSearchParams(location.search);
+        if(!qs.get('gclid')) return;
+        if(sessionStorage.getItem('conv_pageview_fired')) return;
+        sessionStorage.setItem('conv_pageview_fired','1');
+        gtag('event','conversion',{send_to:'AW-17574052899/_n2gCOHJiaAbEKOI-7tB',value:1.0,currency:'VND'});
+        gtag('event','conversion',{send_to:'AW-17650618403/PAGEVIEW_LABEL',value:1.0,currency:'VND'});
+      }catch(e){}
     })();
 
-    // --- CONVERSION 2: Nhấp gọi từ website (click tel:) ---
-    (function attachTelClickConversion() {
-      var SEND_TO1 = 'AW-17574052899/CALL_LABEL';   // thay CALL_LABEL thật
-      var SEND_TO2 = 'AW-17650618403/CALL_LABEL';   // thay CALL_LABEL thật
-
-      document.addEventListener('click', function(e){
-        var a = e.target.closest('a[href^="tel:"]');
-        if (!a) return;
-        if (a.dataset.convFired === '1') return;
-        a.dataset.convFired = '1';
-        setTimeout(() => a.dataset.convFired = '0', 3000);
-
-        try {
-          gtag('event', 'conversion', { send_to: SEND_TO1, value: 1.0, currency: 'VND' });
-          gtag('event', 'conversion', { send_to: SEND_TO2, value: 1.0, currency: 'VND' });
-        } catch(err) {}
+    (function attachTelClickConversion(){
+      const SEND_TO1='AW-17574052899/CALL_LABEL';
+      const SEND_TO2='AW-17650618403/CALL_LABEL';
+      document.addEventListener('click',e=>{
+        const a=e.target.closest('a[href^="tel:"]');
+        if(!a) return;
+        if(a.dataset.convFired==='1') return;
+        a.dataset.convFired='1';
+        setTimeout(()=>a.dataset.convFired='0',3000);
+        try{
+          gtag('event','conversion',{send_to:SEND_TO1,value:1.0,currency:'VND'});
+          gtag('event','conversion',{send_to:SEND_TO2,value:1.0,currency:'VND'});
+        }catch(err){}
       });
     })();
   </script>
 </head>
+
 <body>
-  <header>
-    <div class="container nav">
-      <div class="brand"><img src="./images/Logo.png" alt="Taxi Châu Thành - An Giang" class="logo"></div>
-      <div class="cta">
-        <a class="btn btn-outline" href="https://zalo.me/0939567156" target="_blank" rel="noopener">Zalo</a>
-        <a class="btn btn-primary" href="tel:+84939567156">Gọi 0939 567 156</a>
+<header>
+  <div class="container nav">
+    <div class="brand">
+      <a href="/#home">
+        <img src="./images/Logo.png" alt="Taxi Châu Thành - An Giang" class="logo">
+      </a>
+    </div>
+
+    <nav class="menu">
+      <a href="/#home" data-path="/#home">Trang Chủ</a>
+      <a href="/#service" data-path="/#service">Dịch Vụ</a>
+      <a href="/#cost" data-path="/#cost">Giá</a>
+    </nav>
+
+    <div class="cta">
+      <a class="btn btn-outline" href="https://zalo.me/0939567156" target="_blank" rel="noopener">Zalo</a>
+      <a class="btn btn-primary" href="tel:+84939567156">Gọi 0939 567 156</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container grid-2">
+      <div>
+        <h1>Xe 4–7 chỗ • Đón tận nơi • Giá hợp lý</h1>
+        <p>Phục vụ 24/7 tại <b>Châu Thành – An Giang</b>, đi nội huyện, liên tỉnh, sân bay.</p>
+        <div class="cta">
+          <a class="btn btn-primary" href="tel:+84939567156">📞 Gọi ngay</a>
+          <a class="btn btn-outline" href="#gia">Xem giá tham khảo</a>
+        </div>
+      </div>
+      <div>
+        <img src="./images/Logo.png" alt="Taxi Châu Thành An Giang" class="hero-img">
       </div>
     </div>
-  </header>
+  </section>
 
-  <main>
-    <section class="hero">
-      <div class="container grid-2">
-        <div>
-          <h1>Xe 4–7 chỗ • Đón tận nơi • Giá hợp lý</h1>
-          <p>Phục vụ 24/7 tại <b>Châu Thành – An Giang</b>, đi nội huyện, liên tỉnh, sân bay. Tài xế lịch sự, xe sạch – máy lạnh.</p>
-          <div class="cta">
-            <a class="btn btn-primary" href="tel:+84939567156">📞 Gọi ngay</a>
-            <a class="btn btn-outline" href="#gia">Xem giá tham khảo</a>
-          </div>
-        </div>
-        <div>
-          <img src="./images/Logo.png" alt="Taxi Châu Thành An Giang" class="hero-img">
-        </div>
-      </div>
-    </section>
-
-    <!-- GIỚI THIỆU XE -->
-    <section id="xe" class="container">
-      <h2>Mitsubishi Xpander – Lý tưởng cho chuyến đi của bạn</h2>
-      <div class="car-grid">
-        <figure class="car-figure">
-          <img src="./images/car.png" alt="Mitsubishi Xpander phục vụ taxi tại Châu Thành, An Giang" loading="lazy" class="car-img">
-          <figcaption class="muted">Xe 7 chỗ rộng rãi, máy lạnh mát sâu, khoang hành lý linh hoạt.</figcaption>
-        </figure>
-
-        <div class="car-copy">
-          <p>
-            Dàn xe <b>Mitsubishi Xpander</b> mới, vận hành êm ái, tiết kiệm nhiên liệu – phù hợp di chuyển gia đình, công tác
-            và đưa đón sân bay. Khoang nội thất rộng, ghế ngồi sạch thơm, kết nối nhạc – sạc điện thoại đầy đủ.
-          </p>
-
-          <ul class="car-features">
-            <li>🧳 <b>Chở 4–6 khách + hành lý</b> (gập hàng ghế 3 linh hoạt)</li>
-            <li>❄️ <b>Máy lạnh 2 dàn</b> làm mát nhanh, êm</li>
-            <li>🛡️ <b>An toàn</b>: phanh ABS, túi khí, camera hỗ trợ</li>
-            <li>⏱️ <b>Đúng giờ</b>, theo dõi lộ trình</li>
-            <li>♿ <b>Hỗ trợ khách lớn tuổi</b> lên/xuống xe</li>
-          </ul>
-
-          <div class="cta">
-            <a class="btn btn-primary" href="tel:+84939567156">📞 Đặt xe ngay</a>
-            <a class="btn btn-outline" href="#gia">Xem giá</a>
-          </div>
-
-          <div class="car-spec">
-            <div><span>Chỗ ngồi:</span> 5–7</div>
-            <div><span>Cốp sau:</span> 495–781L (gập ghế)</div>
-            <div><span>Đi tỉnh xa:</span> OK (tiết kiệm nhiên liệu)</div>
-            <div><span>Dịch vụ:</span> Nội huyện, liên tỉnh, sân bay</div>
-          </div>
+  <section id="xe" class="container">
+    <h2>Mitsubishi Xpander – Lý tưởng cho chuyến đi của bạn</h2>
+    <div class="car-grid">
+      <figure class="car-figure">
+        <img src="./images/car.png" alt="Mitsubishi Xpander phục vụ taxi tại Châu Thành, An Giang" loading="lazy" class="car-img">
+        <figcaption class="muted">Xe 7 chỗ rộng rãi, máy lạnh mát sâu, khoang hành lý linh hoạt.</figcaption>
+      </figure>
+      <div class="car-copy">
+        <p>Dàn xe <b>Mitsubishi Xpander</b> mới, vận hành êm ái, tiết kiệm nhiên liệu – phù hợp di chuyển gia đình, công tác và đưa đón sân bay.</p>
+        <ul class="car-features">
+          <li>🧳 <b>Chở 4–6 khách + hành lý</b></li>
+          <li>❄️ <b>Máy lạnh 2 dàn</b></li>
+          <li>🛡️ <b>An toàn</b></li>
+          <li>⏱️ <b>Đúng giờ</b></li>
+          <li>♿ <b>Hỗ trợ khách lớn tuổi</b></li>
+        </ul>
+        <div class="cta">
+          <a class="btn btn-primary" href="tel:+84939567156">📞 Đặt xe ngay</a>
+          <a class="btn btn-outline" href="#gia">Xem giá</a>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="gia" class="container">
-      <h2>Giá tham khảo</h2>
-      <div class="price-line highlight">
-        <span class="old-price">15.000đ/km</span><br>
-      </div>
+  <section id="gia" class="container">
+    <h2>Giá tham khảo</h2>
+    <div class="price-line highlight"><span class="old-price">15.000đ/km</span></div>
+    <div class="price-line highlight"><span class="new-price">12.000đ/km</span></div>
+    <div class="price-line"><span>Châu Thành ↔ Long Xuyên</span></div>
+    <div class="price-line"><span>Châu Thành ↔ Châu Đốc</span></div>
+    <div class="price-line"><span>Châu Thành ↔ Cần Thơ</span></div>
+    <p class="muted">Vùng lân cận Châu Thành 📞 Gọi 0939 567 156.</p>
+  </section>
 
-      <div class="price-line highlight">
-        <span class="new-price">12.000đ/km</span>
-      </div>
-
-      <div class="price-line"><span>Châu Thành ↔ Long Xuyên</span></div>
-      <div class="price-line"><span>Châu Thành ↔ Châu Đốc</span></div>
-      <div class="price-line"><span>Châu Thành ↔ Cần Thơ</span></div>
-      <p class="muted">Các vùng lân cận Châu Thành có thể 📞 Gọi 0939 567 156 trực tiếp để đặt xe.</p>
-    </section>
-
-    <section class="container">
-      <h2>Liên hệ & vị trí</h2>
-      <div class="grid-2">
-        <div class="card">
-          <p><b>Hotline:</b> <a href="tel:+84939567156">0939 567 156</a></p>
-          <p><b>Zalo:</b> <a href="https://zalo.me/0939567156" target="_blank" rel="noopener">Chat ngay</a></p>
-          <p><b>Khu vực phục vụ:</b> Châu Thành, An Giang và lân cận</p>
-          <div class="cta">
-            <a class="btn btn-primary" href="tel:+84939567156">📞 Đặt xe</a>
-            <a class="btn btn-outline" href="https://zalo.me/0939567156" target="_blank" rel="noopener">Nhắn Zalo</a>
-          </div>
+  <section class="container">
+    <h2>Liên hệ & vị trí</h2>
+    <div class="grid-2">
+      <div class="card">
+        <p><b>Hotline:</b> <a href="tel:+84939567156">0939 567 156</a></p>
+        <p><b>Zalo:</b> <a href="https://zalo.me/0939567156" target="_blank" rel="noopener">Chat ngay</a></p>
+        <p><b>Khu vực:</b> Châu Thành, An Giang</p>
+        <div class="cta">
+          <a class="btn btn-primary" href="tel:+84939567156">📞 Đặt xe</a>
+          <a class="btn btn-outline" href="https://zalo.me/0939567156" target="_blank" rel="noopener">Nhắn Zalo</a>
         </div>
-        <iframe class="map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Ch%C3%A2u%20Th%C3%A0nh%20An%20Giang&output=embed"></iframe>
       </div>
-    </section>
+      <iframe class="map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Ch%C3%A2u%20Th%C3%A0nh%20An%20Giang&output=embed"></iframe>
+    </div>
+  </section>
 
-    <footer class="container">© 2025 Taxi Châu Thành – An Giang. Hoạt động 24/7.</footer>
-  </main>
+  <footer class="container">© 2025 Taxi Châu Thành – An Giang. Hoạt động 24/7.</footer>
+</main>
 
-  <!-- Mobile actions -->
-  <a class="call-fab" href="tel:+84939567156" aria-label="Gọi ngay">📞</a>
-  <div class="sticky-cta">
-    <a class="call" href="tel:+84939567156">📞 Gọi 0939 567 156</a>
-    <a class="zalo" href="https://zalo.me/0939567156" target="_blank" rel="noopener">Zalo Chat</a>
-  </div>
+<a class="call-fab" href="tel:+84939567156" aria-label="Gọi ngay">📞</a>
+<div class="sticky-cta">
+  <a class="call" href="tel:+84939567156">📞 Gọi 0939 567 156</a>
+  <a class="zalo" href="https://zalo.me/0939567156" target="_blank" rel="noopener">Zalo Chat</a>
+</div>
 
-  <script src="./assets/app.js"></script>
+<!-- ============================= -->
+<!-- Hash router script -->
+<!-- ============================= -->
+<script>
+(function(){
+  const SECTIONS={
+    '/#home':()=>document.querySelector('.hero'),
+    '/#service':()=>document.querySelector('#xe'),
+    '/#cost':()=>document.querySelector('#gia'),
+  };
+  const HEADER_OFFSET=72;
+
+  function scrollToSection(key,smooth=true){
+    const getEl=SECTIONS[key]||SECTIONS['/#home'];
+    const el=getEl&&getEl();
+    if(!el)return;
+    const y=el.getBoundingClientRect().top+scrollY-HEADER_OFFSET;
+    scrollTo({top:y,behavior:smooth?'smooth':'auto'});
+  }
+
+  function setActive(key){
+    document.querySelectorAll('.menu a').forEach(a=>{
+      a.classList.toggle('active',(a.dataset.path||a.getAttribute('href'))===key);
+    });
+  }
+
+  function currentKey(){
+    return '/#'+(location.hash.replace('#','')||'home');
+  }
+
+  function navigate(key,{replace=false,smooth=true}={}){
+    const qs=location.search||'';
+    const url=key+qs;
+    replace?history.replaceState({key},'',url):history.pushState({key},'',url);
+    setActive(key);
+    requestAnimationFrame(()=>scrollToSection(key,smooth));
+  }
+
+  document.querySelectorAll('.menu a').forEach(a=>{
+    a.addEventListener('click',e=>{
+      e.preventDefault();
+      navigate(a.dataset.path||a.getAttribute('href'));
+    });
+  });
+
+  addEventListener('popstate',()=>{
+    const key=currentKey();
+    setActive(key);
+    scrollToSection(key,false);
+  });
+
+  const first=currentKey();
+  navigate(first,{replace:true,smooth:false});
+})();
+</script>
 </body>
 </html>
