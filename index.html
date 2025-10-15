@@ -56,6 +56,7 @@
     gtag('config', 'AW-17650618403');
   </script>
 
+  <!-- Conversion Pageview (chỉ bắn khi có gclid) -->
   <script>
     (function firePageviewConversionOnce(){
       try{
@@ -67,22 +68,20 @@
         gtag('event','conversion',{send_to:'AW-17650618403/PAGEVIEW_LABEL',value:1.0,currency:'VND'});
       }catch(e){}
     })();
+  </script>
 
-    (function attachTelClickConversion(){
-      const SEND_TO1='AW-17574052899/CALL_LABEL';
-      const SEND_TO2='AW-17650618403/CALL_LABEL';
-      document.addEventListener('click',e=>{
-        const a=e.target.closest('a[href^="tel:"]');
-        if(!a) return;
-        if(a.dataset.convFired==='1') return;
-        a.dataset.convFired='1';
-        setTimeout(()=>a.dataset.convFired='0',3000);
-        try{
-          gtag('event','conversion',{send_to:SEND_TO1,value:1.0,currency:'VND'});
-          gtag('event','conversion',{send_to:SEND_TO2,value:1.0,currency:'VND'});
-        }catch(err){}
+  <!-- NEW: Tag Lượt nhấp (click conversion) -->
+  <script>
+    function gtag_report_conversion(url) {
+      var callback = function () {
+        if (typeof url !== 'undefined') window.location = url;
+      };
+      gtag('event', 'conversion', {
+        send_to: 'AW-17650618403/jc8lCJvsq60bEKOgvOBB',
+        event_callback: callback
       });
-    })();
+      return false;
+    }
   </script>
 </head>
 
@@ -97,13 +96,15 @@
 
     <nav class="menu">
       <a href="/#home" data-path="/#home">Trang Chủ</a>
-      <a href="/#service" data-path="/#service">Dịch Vụ</a>
+      <a href="/#service" data-path="/#service" style="color: rgb(193, 85, 85)">Đặt Xe Ngay</a>
       <a href="/#cost" data-path="/#cost">Giá</a>
     </nav>
 
     <div class="cta">
-      <a class="btn btn-outline" href="https://zalo.me/0939567156" target="_blank" rel="noopener">Zalo</a>
-      <a class="btn btn-primary" href="tel:+84939567156">Gọi 0939 567 156</a>
+      <a class="btn btn-outline" href="https://zalo.me/0939567156" target="_blank" rel="noopener"
+         onclick="return gtag_report_conversion(this.href)">Zalo</a>
+      <a class="btn btn-primary" href="tel:+84939567156"
+         onclick="return gtag_report_conversion(this.href)">Gọi 0939 567 156</a>
     </div>
   </div>
 </header>
@@ -115,7 +116,8 @@
         <h1>Xe 4–7 chỗ • Đón tận nơi • Giá hợp lý</h1>
         <p>Phục vụ 24/7 tại <b>Châu Thành – An Giang</b>, đi nội huyện, liên tỉnh, sân bay.</p>
         <div class="cta">
-          <a class="btn btn-primary" href="tel:+84939567156">📞 Gọi ngay</a>
+          <a class="btn btn-primary" href="tel:+84939567156"
+             onclick="return gtag_report_conversion(this.href)">📞 Gọi ngay</a>
           <a class="btn btn-outline" href="#gia">Xem giá tham khảo</a>
         </div>
       </div>
@@ -142,7 +144,8 @@
           <li>♿ <b>Hỗ trợ khách lớn tuổi</b></li>
         </ul>
         <div class="cta">
-          <a class="btn btn-primary" href="tel:+84939567156">📞 Đặt xe ngay</a>
+          <a class="btn btn-primary" href="tel:+84939567156"
+             onclick="return gtag_report_conversion(this.href)">📞 Đặt xe ngay</a>
           <a class="btn btn-outline" href="#gia">Xem giá</a>
         </div>
       </div>
@@ -163,30 +166,36 @@
     <h2>Liên hệ & vị trí</h2>
     <div class="grid-2">
       <div class="card">
-        <p><b>Hotline:</b> <a href="tel:+84939567156">0939 567 156</a></p>
-        <p><b>Zalo:</b> <a href="https://zalo.me/0939567156" target="_blank" rel="noopener">Chat ngay</a></p>
+        <p><b>Hotline:</b> <a href="tel:+84939567156"
+           onclick="return gtag_report_conversion(this.href)">0939 567 156</a></p>
+        <p><b>Zalo:</b> <a href="https://zalo.me/0939567156" target="_blank" rel="noopener"
+           onclick="return gtag_report_conversion(this.href)">Chat ngay</a></p>
         <p><b>Khu vực:</b> Châu Thành, An Giang</p>
         <div class="cta">
-          <a class="btn btn-primary" href="tel:+84939567156">📞 Đặt xe</a>
-          <a class="btn btn-outline" href="https://zalo.me/0939567156" target="_blank" rel="noopener">Nhắn Zalo</a>
+          <a class="btn btn-primary" href="tel:+84939567156"
+             onclick="return gtag_report_conversion(this.href)">📞 Đặt xe</a>
+          <a class="btn btn-outline" href="https://zalo.me/0939567156" target="_blank" rel="noopener"
+             onclick="return gtag_report_conversion(this.href)">Nhắn Zalo</a>
         </div>
       </div>
-      <iframe class="map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Ch%C3%A2u%20Th%C3%A0nh%20An%20Giang&output=embed"></iframe>
+      <iframe class="map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps?q=Ch%C3%A2u%20Th%C3%A0nh%20An%20Giang&output=embed"></iframe>
     </div>
   </section>
 
   <footer class="container">© 2025 Taxi Châu Thành – An Giang. Hoạt động 24/7.</footer>
 </main>
 
-<a class="call-fab" href="tel:+84939567156" aria-label="Gọi ngay">📞</a>
+<a class="call-fab" href="tel:+84939567156" aria-label="Gọi ngay"
+   onclick="return gtag_report_conversion(this.href)">📞</a>
 <div class="sticky-cta">
-  <a class="call" href="tel:+84939567156">📞 Gọi 0939 567 156</a>
-  <a class="zalo" href="https://zalo.me/0939567156" target="_blank" rel="noopener">Zalo Chat</a>
+  <a class="call" href="tel:+84939567156"
+     onclick="return gtag_report_conversion(this.href)">📞 Gọi 0939 567 156</a>
+  <a class="zalo" href="https://zalo.me/0939567156" target="_blank" rel="noopener"
+     onclick="return gtag_report_conversion(this.href)">Zalo Chat</a>
 </div>
 
-<!-- ============================= -->
 <!-- Hash router script -->
-<!-- ============================= -->
 <script>
 (function(){
   const SECTIONS={
