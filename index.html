@@ -30,7 +30,7 @@
   <meta name="twitter:description" content="Xe 4-7 chỗ, đón tận nơi, giá hợp lý. Gọi 0817 498 156." />
   <meta name="twitter:image" content="https://taxichauthanh.com/images/Logo2.png" />
 
-  <!-- Schema.org JSON-LD -->
+  <!-- Schema.org JSON-LD (giữ lại, không phải Google Tag) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -44,44 +44,6 @@
     "image": "https://taxichauthanh.com/images/Logo2.png",
     "sameAs": ["https://zalo.me/0939567156"]
   }
-  </script>
-
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17574052899"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'AW-17574052899', {'phone_conversion_number': '+84 817 498 156'});
-    gtag('config', 'AW-17650618403');
-  </script>
-
-  <!-- Conversion Pageview -->
-  <script>
-    (function firePageviewConversionOnce(){
-      try{
-        const qs = new URLSearchParams(location.search);
-        if(!qs.get('gclid')) return;
-        if(sessionStorage.getItem('conv_pageview_fired')) return;
-        sessionStorage.setItem('conv_pageview_fired','1');
-        gtag('event','conversion',{send_to:'AW-17574052899/_n2gCOHJiaAbEKOI-7tB',value:1.0,currency:'VND'});
-        gtag('event','conversion',{send_to:'AW-17650618403/PAGEVIEW_LABEL',value:1.0,currency:'VND'});
-      }catch(e){}
-    })();
-  </script>
-
-  <!-- Tag lượt nhấp -->
-  <script>
-    function gtag_report_conversion(url) {
-      var callback = function () {
-        if (typeof url !== 'undefined') window.location = url;
-      };
-      gtag('event', 'conversion', {
-        send_to: 'AW-17650618403/jc8lCJvsq60bEKOgvOBB',
-        event_callback: callback
-      });
-      return false;
-    }
   </script>
 
   <style>
@@ -124,10 +86,8 @@
     </nav>
 
     <div class="cta">
-      <a class="btn btn-outline" href="https://zalo.me/0939567156" target="_blank" rel="noopener"
-         onclick="return gtag_report_conversion(this.href)">Zalo</a>
-      <a class="btn btn-primary" href="tel:+84817498156"
-         onclick="return gtag_report_conversion(this.href)">Gọi 0817 498 156</a>
+      <a class="btn btn-outline" href="https://zalo.me/0939567156" target="_blank" rel="noopener">Zalo</a>
+      <a class="btn btn-primary" href="tel:+84817498156">Gọi 0817 498 156</a>
     </div>
   </div>
 </header>
@@ -139,8 +99,7 @@
         <h1>Xe 4–7 chỗ • Đón tận nơi • Giá hợp lý</h1>
         <p>Phục vụ 24/7 tại <b>Châu Thành – An Giang</b>, đi nội huyện, liên tỉnh, sân bay.</p>
         <div class="cta">
-          <a class="btn btn-primary" href="tel:+84817498156"
-             onclick="return gtag_report_conversion(this.href)">📞 Gọi ngay</a>
+          <a class="btn btn-primary" href="tel:+84817498156">📞 Gọi ngay</a>
           <a class="btn btn-outline" href="#gia">Xem giá tham khảo</a>
         </div>
       </div>
@@ -167,8 +126,7 @@
           <li>♿ <b>Hỗ trợ khách lớn tuổi</b></li>
         </ul>
         <div class="cta">
-          <a class="btn btn-primary" href="tel:+84817498156"
-             onclick="return gtag_report_conversion(this.href)">📞 Đặt xe ngay</a>
+          <a class="btn btn-primary" href="tel:+84817498156">📞 Đặt xe ngay</a>
           <a class="btn btn-outline" href="#gia">Xem giá</a>
         </div>
       </div>
@@ -189,16 +147,12 @@
     <h2>Liên hệ & vị trí</h2>
     <div class="grid-2">
       <div class="card">
-        <p><b>Hotline:</b> <a href="tel:+84817498156"
-           onclick="return gtag_report_conversion(this.href)">0817 498 156</a></p>
-        <p><b>Zalo:</b> <a href="https://zalo.me/0939567156" target="_blank" rel="noopener"
-           onclick="return gtag_report_conversion(this.href)">Chat ngay</a></p>
+        <p><b>Hotline:</b> <a href="tel:+84817498156">0817 498 156</a></p>
+        <p><b>Zalo:</b> <a href="https://zalo.me/0939567156" target="_blank" rel="noopener">Chat ngay</a></p>
         <p><b>Khu vực:</b> Châu Thành, An Giang</p>
         <div class="cta">
-          <a class="btn btn-primary" href="tel:+84817498156"
-             onclick="return gtag_report_conversion(this.href)">📞 Đặt xe</a>
-          <a class="btn btn-outline" href="https://zalo.me/0939567156" target="_blank" rel="noopener"
-             onclick="return gtag_report_conversion(this.href)">Nhắn Zalo</a>
+          <a class="btn btn-primary" href="tel:+84817498156">📞 Đặt xe</a>
+          <a class="btn btn-outline" href="https://zalo.me/0939567156" target="_blank" rel="noopener">Nhắn Zalo</a>
         </div>
       </div>
       <iframe class="map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
@@ -210,8 +164,7 @@
 </main>
 
 <!-- Nút call nổi cố định -->
-<a href="tel:+84817498156" class="call-button" aria-label="Gọi 0817 498 156"
-   onclick="return gtag_report_conversion(this.href)">
+<a href="tel:+84817498156" class="call-button" aria-label="Gọi 0817 498 156">
   <img src="./images/call.gif" alt="Gọi điện">
 </a>
 
